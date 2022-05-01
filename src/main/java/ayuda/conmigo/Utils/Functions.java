@@ -7,7 +7,7 @@ import javax.servlet.ServletConfig;
 import javax.servlet.http.HttpServletRequest;
 
 
-public class EjemploFunciones {
+public class Functions {
 	
 	//Creamos tabla =  guardo tabla en etiqueta a usar
 	public void tableData (ServletConfig servletConfig, HttpServletRequest request) throws IOException {
