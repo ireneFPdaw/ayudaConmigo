@@ -1,7 +1,7 @@
 package ayuda.conmigo.Business;
 
 
-public class confirm_Log {
+public class Confirm_Log {
 
 	/*COMPROBAR QUE EL USUARIO ESTÁ LOGUEADO*/
 	public static boolean checkLogVolunteer(Object obj) {
