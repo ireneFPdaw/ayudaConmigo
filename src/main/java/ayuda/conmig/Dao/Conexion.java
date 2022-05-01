@@ -1,4 +1,4 @@
-package ayuda.conmigo.Dao;
+package ayuda.conmig.Dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
