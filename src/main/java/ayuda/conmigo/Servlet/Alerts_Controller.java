@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ayuda.conmigo.Utils.Functions;
+
 
 @WebServlet("/Alerts_Controller")
 public class Alerts_Controller extends HttpServlet {
@@ -19,7 +21,7 @@ public class Alerts_Controller extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		doPost(request,response);
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -34,6 +36,9 @@ public class Alerts_Controller extends HttpServlet {
 		//--------------------------------------------SEND DATA
 		
 		// 1.1) Mandar datos de combo producto al formulario (combo creado en utils) (import de clase necesaria)
+		new Functions().prepareCreateAlert(getServletConfig(), request);
+		
+		new Functions().prepareCreateAlert(getServletConfig(), request);
 		// 1.2) Mostramos datos de la ONG logueada (html-String datosONG en utils) (import de clase necesaria)
 		
 		
@@ -51,6 +56,8 @@ public class Alerts_Controller extends HttpServlet {
 		// 4)   Necesitamos = conexion a BD getServletConfig()
 		
 		
+		String destino = "Alert.jsp";
+		request.getRequestDispatcher(destino).forward(request, response);	
 		//doGet(request, response);
 	}
 

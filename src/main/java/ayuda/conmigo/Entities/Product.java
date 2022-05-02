@@ -9,11 +9,11 @@ public class Product {
 	
 	
 	//Constructor por defecto
-	public Product() {
+	public Product(String type_product) {
 	super();
 	this.id_producto = 0;
 	this.name_producto = "";
-	this.type_product = "";
+	this.type_product = type_product;
 	}
 	
 	//Constructor
