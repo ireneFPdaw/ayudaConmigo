@@ -31,7 +31,8 @@ public class Alerts_Controller extends HttpServlet {
 		
 		//--------------------------------------------VIEW CREATE ALERTS
 		// 1)   Una vez logueada la ONG entrará en este controlador (Página formulario alertas)
-		
+		request.setAttribute("date_alert", request.getParameter("date_alert") );
+		request.setAttribute("place_alert", request.getParameter("place_alert") );
 		
 		//--------------------------------------------SEND DATA
 		
@@ -39,11 +40,22 @@ public class Alerts_Controller extends HttpServlet {
 		new Functions().prepareCreateAlert(getServletConfig(), request);
 		
 		new Functions().prepareCreateAlert(getServletConfig(), request);
+		
 		// 1.2) Mostramos datos de la ONG logueada (html-String datosONG en utils) (import de clase necesaria)
 		
 		
 		//--------------------------------------------COLLECTING DATA
 		// 2)   Recogemos los datos previamente validados con js 
+		
+		String date = request.getParameter("date_alert");
+		String place = request.getParameter("place_alert");		
+		String allergen = request.getParameter("allergen_alert");
+		String annotation = request.getParameter("annotation_alert");
+		String productComida = request.getParameter("Comida");
+		String productRopa = request.getParameter("Ropa");
+		
+		System.out.println(date);
+		System.out.println(place);
 		// 2.1) Mostramos datos en ventana emergente de la alerta generada desde este controlador sin mandar a BD (crear ventana emergente en utils)
 		// 2.2) Tras confirmar "Boton OK" mandamos los datos a la BD / Si se da a "Cancel" no se mandarán los datos
 		

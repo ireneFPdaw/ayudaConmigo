@@ -1,0 +1,63 @@
+@import url("variables.css");
+
+/* nav vertical */
+
+.flex-column {
+
+    background-color: white!important;
+   
+    
+}
+
+.nav-linked {
+    /* border-radius: 200px !important; */
+    transition: all 0.5s;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    background-image: var(--colorGenericNavBar);
+    width: 10rem;
+    height: 7rem;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.nav-linked>small{
+    color:var(--colorGenericText)!important;
+}
+
+.nav-linked>i{
+    color:var(--colorGenericText)!important;
+}
+
+
+.nav-linked small {
+    padding-top: 14px;
+    font-family: myFontTitle;
+    text-decoration: none;
+}
+
+.nav-linked .fa {
+    transition: all 1s;
+    font-size: 20px;
+    color:black;
+}
+
+.nav-linked:hover .fa {
+    transform: rotate(360deg);
+}
+
+small{
+    text-decoration: none;
+    color:black;
+    font-family:'Times New Roman', Times, serif
+}
+
+/*----------------------MOVIL: PONER ARRIBA EL NAV EN HORIZONTAL-----------------------*/
+@media screen and (max-width:615px){
+
+   
+
+}

@@ -1,0 +1,64 @@
+@import url("variables.css");
+
+/*------------------------CSS HEADER---------------------------*/
+
+.header {
+   
+    background-image: var(--colorGenericNavBar);
+    border-radius: 7px ; 
+    color: var(--colorGenericText)!important;   
+    font-family: myFontTitle!important;
+    /*bg-gradient-primary*/
+}
+
+.headerLogo {
+    border-radius: 7px;
+    border: 1px solid white;
+    padding: 10px;
+    box-shadow: -5px 5px 8px #5a47b7;
+    width: 4rem;
+    height: 4rem; 
+}
+
+.textTitle{
+    color:var(--colorGenericText)!important;
+    font-family: myFontTitle!important;
+
+}
+
+.headerPhone > h2 {
+    width: 4rem;
+    height: 4rem; 
+    font-family: myFontTitle!important;
+    color: var(--colorGenericText)!important;
+}
+
+.nav-link {
+    margin-left: 5px;
+    border: 2px solid var(--colorGenericText);
+    border-radius: 100px 100px 100px 100px; 
+   
+    
+}
+
+.fa-map-marker-alt, .fa-envelope-square, .fa-user-circle, .fa-search {
+    
+    color: var(--colorGenericText);
+}
+
+.nav-link:hover{
+
+    border-color: white;
+    background-color: var(--colorGenericIcons);
+    color: black;
+    width: 100px;
+    text-align: center;
+
+}
+
+@media screen and (max-width:768px) {
+    
+    .titleheader{
+        display: none;
+    }
+}

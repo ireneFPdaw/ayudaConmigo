@@ -1,0 +1,22 @@
+@import url("variables.css");
+
+/*------------------------CSS HEADER---------------------------*/
+
+.footerStyle {
+   
+    background-image: var(--colorGenericFooter);
+    border-radius: 7px ; 
+    color: var(--colorTextBackground)!important;
+    /*bg-gradient-primary*/
+    font-family: myFontTitle!important;
+    color:var(--colorGenericText)!important;
+   
+}
+
+
+.footer-copyright {
+
+    border-top: 1px solid rgb(241, 241, 251);
+    font-size: 0.6rem!important;
+    color:var(--colorGenericText)!important;
+}
