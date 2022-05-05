@@ -1,4 +1,3 @@
-
 'use strick'
 
 	//-----Al mandar datos onsubmit del formulario
@@ -41,8 +40,6 @@
 			var year= date.getFullYear();
 			
 			var formattedDate =  year+"-"+month+"-"+day;
-			
-		   
 			  var date = $('#dateInput').val();
 			  console.log(date); // 2022-05-03
 			  var smsDate = $("#smsDate");  
@@ -91,15 +88,16 @@
 			   var aller = $('#allergenInput').val();
 			   console.log(aller);
 		       var mensaje = $('#smsAllergen');
-		       var ex1 = /[a-zA-Z0-9\s\p{P}]+\.?(( |\-)[a-zA-Z1-9s\p{P}]+\.?)/;
+		       var ex1 = /^[A-Za-z]+$/;
 	
 	    
-			if(ex1.test(aller)){
+			if(ex1.test(aller) || aller == "")
+			{
 				mensaje.hide();
 	             return true;
 	
             } else {
-                mensaje.html("No puede estar vacia la casilla.");
+                mensaje.html("No válidos caracteres especiales ni números.");
                 return false;
             }
 	       
@@ -113,7 +111,6 @@
 	 	var mensaje = $('#smsProduct'); 
 		var proce= document.getElementsByName('producto');
 	
-		
 	    for(i=0; i<proce.length; i++){
 	        
 	        if(proce[i].checked){

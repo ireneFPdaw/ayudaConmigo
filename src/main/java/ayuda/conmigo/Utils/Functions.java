@@ -28,11 +28,7 @@ public class Functions {
 				
 			/*DATOS PARA CREAR TARJETAS DE PRODUCTOS SEGUN EL TIPO ----------------------------------------*/	
 			ArrayList<Product> listDataProduct = new ProductDao(servletConfig).getValuesById(defaultSelect);  //Lista de los productos por tipo seleccionado
-			String defaultSelectProduct = listDataProduct.get(0).getName_producto();						 //Elijo por defecto el primer producto de la lista (string)
-			
-			if (request.getParameter("btnProductSelect") != null) {
-				defaultSelectProduct = request.getParameter("btnProductSelect");						   //VV.seleccionada si pulso el boton de seleccionar ese producto en concreto
-			}
+			int defaultSelectProduct = listDataProduct.get(0).getId_producto();						 //Elijo por defecto el primer producto de la lista (string)
 				
 			
 			/*FOTOS DE LOS PRODUCTOS: el nombre de la foto (producto general) se corresponde con BD---------------*/
@@ -52,5 +48,6 @@ public class Functions {
 					
 		
 		}	
+
 		
 }

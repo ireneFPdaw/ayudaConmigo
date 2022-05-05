@@ -53,6 +53,8 @@
 			<input type="submit" value="Crear Alerta" id="btnDoAlert" name="btnDoAlert" >
 			<input type="button" value="Cancelar Alerta" id="cancel" name="btnDoCancel" >
 		</form>
+		<br/>
+		${AlertNewONG}
 	</div>
 </body>
 </html>
