@@ -36,16 +36,18 @@
 			<!-- Combo Tipo producto -->
 			${comboType} 
 			<br/>
+			<br/>
 			<!-- Card dependiendo del producto -->
 			${cardProduct}
 			<small id="smsProduct" class="form-text text-muted"></small>
 			<br/>
-			<label>Alérgenos(Ejemplo: Leche -sin lactosa-):</label>
-			<input type="text" name="allergen_alert" id="allergenInput">
+			<label>*Alérgenos:</label>
+			<input type="text" name="allergen_alert" id="allergenInput" placeholder="leche sin lactosa...">
 			<small id="smsAllergen" class="form-text text-muted"></small>
-			<label>Anotaciones(Puede incluir la fecha de finalización): </label>
-			<input type="text" name="annotation_alert" id="annotationInput">
-			<small id="smsAnotation" class="form-text text-muted"></small>
+			<label>*Anotaciones(Puede incluir la fecha de finalización de entrega): </label>
+			<input type="text" name="annotation_alert" id="annotationInput" placeholder="talla xs...">
+			<small id="smsAnnotation" class="form-text text-muted"></small>
+			<label>(*Opcionales):</label>
 			<br/>
 			<br/>
 			<input type="submit" value="Crear Alerta" id="btnDoAlert" name="btnDoAlert" >

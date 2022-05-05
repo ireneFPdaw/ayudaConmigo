@@ -14,7 +14,7 @@ public class Cards_Fun {
 		for(Product p: listDataProduct) {
 			card += "<div class=\'card\'>"
 					   + "<div class=\'card-body\'>   <h5 class=\'card-title\'>"+ p.getName_producto()  +"</h5></div>"
-					   + "<div class=\'card-footer\'>  <input type=\'radio\' class=\'btn btn-secondary\' id=\'"+  p.getType_product() +"\'  name= \'producto\' id=\'" +  p.getName_producto() + "\'> </div></div>";
+					   + "<div class=\'card-footer\'>  <input type=\'radio\' class=\'btn btn-secondary\' value=\'"+  p.getType_product() +"\'  name= \'producto\' id=\'" +  p.getName_producto() + "\'> </div></div>";
 		}
 		card += "</div>";
 		return card;

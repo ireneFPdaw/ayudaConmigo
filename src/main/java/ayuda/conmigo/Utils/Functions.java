@@ -20,7 +20,7 @@ public class Functions {
 			/*DATOS PARA CREAR EL COMBO TIPO DE PRODUCTO----------------------------------------*/
 			ArrayList<Product> listTypeProduct = new ProductDao(servletConfig).getValues();  				  	  //Saco los  tipos de producto de la BD	con preparada					
 			String defaultSelect = listTypeProduct.get(0).getType_product();
-			System.out.println(defaultSelect);//Elijo por defecto el primer tipo (string)
+			
 			
 			if (request.getParameter("comboType") != null) {
 				defaultSelect = request.getParameter("comboType");									   			//VV.seleccionada si pulso combo
@@ -29,7 +29,7 @@ public class Functions {
 			/*DATOS PARA CREAR TARJETAS DE PRODUCTOS SEGUN EL TIPO ----------------------------------------*/	
 			ArrayList<Product> listDataProduct = new ProductDao(servletConfig).getValuesById(defaultSelect);  //Lista de los productos por tipo seleccionado
 			String defaultSelectProduct = listDataProduct.get(0).getName_producto();						 //Elijo por defecto el primer producto de la lista (string)
-			System.out.println(defaultSelectProduct);
+			
 			if (request.getParameter("btnProductSelect") != null) {
 				defaultSelectProduct = request.getParameter("btnProductSelect");						   //VV.seleccionada si pulso el boton de seleccionar ese producto en concreto
 			}

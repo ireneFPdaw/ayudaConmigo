@@ -6,13 +6,13 @@
 	
 	    var date = verifyDate();
 	    console.log(date);
-	    var place = verifyPlace();          //Recordar que la primera debe ser en mayuscula
+	    var place = verifyPlace();          
 	    console.log(place);
-	    var allergen = verifyAllergen();    //Recordar que la primera debe ser en mayuscula
-	    var annotation = verifyAnnotation();//Recordar que la primera debe ser en mayuscula
+	    var allergen = verifyAllergen();    
 	    var product = verifyProduct();
 	
 	    if (date && place && allergen && annotation && product) {
+			
 	        return true;
 	
 	    }else{
@@ -31,19 +31,32 @@
 	//---------VALIDACIONES 1º PREGUNTAS
 	function verifyDate() {         
 		   
+		   function pad2(n) {
+			  return (n < 10 ? '0' : '') + n;
+			}
+			
+			var date = new Date();
+			var month = pad2(date.getMonth()+1);//months (0-11)
+			var day = pad2(date.getDate());//day (1-31)
+			var year= date.getFullYear();
+			
+			var formattedDate =  year+"-"+month+"-"+day;
+			
+		   
 			  var date = $('#dateInput').val();
+			  console.log(date); // 2022-05-03
 			  var smsDate = $("#smsDate");  
-			  var dateNow = new Date();
+			  
 			  
 			  if(date == ""){
 				
-				smsDate.html("No puede estar vacia.");
+				smsDate.html("No puede estar vacia");
 				return false;
 				
-				}else if (date < dateNow ){
+				}else if (date < formattedDate ){
 					
-					smsDate.html("El comienzo debe ser a partir del día de hoy");
-					return false;
+				smsDate.html("El comienzo debe ser a partir del dia de hoy");
+				return false;
 					
 				}else{
 					smsDate.hide();
@@ -55,7 +68,6 @@
 	   
 	   	//Validar el tamaño segun la BD
 	        var place = $('#placeInput').val();
-	        console.log(place);
 	        var mensaje = $('#smsPlace');
 	        var ex1 = /[a-zA-Z0-9\s\p{P}]+\.?(( |\-)[a-zA-Z1-9s\p{P}]+\.?)/;
 	
@@ -69,46 +81,31 @@
 	            }
 	        } else {
 	            mensaje.html("No puede estar vacia.");
+	            return false;
 	        }
 	}
 
 	function verifyAllergen() {
 		
-			//Validar tamaño segun la BD
-		   var aller = $('#allergenInput').val();
-		   console.log(aller);
-	       var mensaje = $('#smsAllergen');
-	       var ex1 = /^[A-Za-z]+$/;
+				//Validar tamaño segun la BD
+			   var aller = $('#allergenInput').val();
+			   console.log(aller);
+		       var mensaje = $('#smsAllergen');
+		       var ex1 = /[a-zA-Z0-9\s\p{P}]+\.?(( |\-)[a-zA-Z1-9s\p{P}]+\.?)/;
 	
-	     
-	            if (ex1.test(aller) || aller == "") {
-	                mensaje.hide();
-	                return true;
-	                
-	            } else {
-	                mensaje.html("Error.Intenteló de nuevo.");
-	                return false;
-	            }
+	    
+			if(ex1.test(aller)){
+				mensaje.hide();
+	             return true;
+	
+            } else {
+                mensaje.html("No puede estar vacia la casilla.");
+                return false;
+            }
 	       
 	}
 
-	function verifyAnnotation() {
-				//Validar tamaño sgun la BD
-			    var annotation = $('#annotationInput').val();
-			    console.log(annotation);
-		        var mensaje = $('#smsAnotation');
-	
-	      
-	            if ( annotation != "") {
-		 			mensaje.html("Error.Intenteló de nuevo.");
-	                return false;
-	                
-	            } else {
-	               mensaje.hide();
-	                return true;
-	            }       
-	
-  }
+
 
 	function verifyProduct() {
 		//Validar tamaño segun BD
@@ -118,14 +115,17 @@
 	
 		
 	    for(i=0; i<proce.length; i++){
+	        
 	        if(proce[i].checked){
-	            //var processor=proce[i].checked;
+	            var processor=proce[i].checked;
+	            console.log(processor);
 	            mensaje.hide();
 	            return true;
+	            
 	        }else{
-				mensaje.html("Debe seleccionar un producto")
+				mensaje.html("Debe seleccionar un producto");
 				return false;
-				}
+			}
 		}
 	
 }

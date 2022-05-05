@@ -45,17 +45,20 @@ public class Alerts_Controller extends HttpServlet {
 		
 		
 		//--------------------------------------------COLLECTING DATA
-		// 2)   Recogemos los datos previamente validados con js 
+		// 2)   Recogemos los datos previamente validados con js (Poner la primera con mayuscula)
 		
 		String date = request.getParameter("date_alert");
 		String place = request.getParameter("place_alert");		
 		String allergen = request.getParameter("allergen_alert");
 		String annotation = request.getParameter("annotation_alert");
-		String productComida = request.getParameter("Comida");
-		String productRopa = request.getParameter("Ropa");
+		System.out.println(annotation);
 		
-		System.out.println(date);
-		System.out.println(place);
+		//Recoger valor tipo radio en java el seleccionado de producto(recojo en array).
+		String productFood = request.getParameter("producto");
+		System.out.println(productFood);
+		
+		
+
 		// 2.1) Mostramos datos en ventana emergente de la alerta generada desde este controlador sin mandar a BD (crear ventana emergente en utils)
 		// 2.2) Tras confirmar "Boton OK" mandamos los datos a la BD / Si se da a "Cancel" no se mandarán los datos
 		

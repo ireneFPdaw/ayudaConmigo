@@ -12,7 +12,7 @@ public class Combo_Fun {
 			//Como necesitaremos el tipo será string
 			String option = "<select name='comboType' onchange=\"submit()\">";
 			for(Product p: listTypeProduct){
-				if (p.getType_product() == select) {
+				if (p.getType_product().equals(select) ) {
 					option += "<option value='" + p.getType_product()+ "' selected >" + p.getType_product()+ "</option>";
 				}else {
 					option += "<option value='" + p.getType_product()+ "'>" + p.getType_product() + "</option>";
