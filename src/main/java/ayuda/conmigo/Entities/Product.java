@@ -16,6 +16,7 @@ public class Product {
 	this.type_product = type_product;
 	}
 	
+	
 	//Constructor
 	public Product(int id_producto, String name_producto, String type_product) {
 	super();

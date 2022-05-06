@@ -20,11 +20,15 @@
 	}
 
 	//------Limpiamos el formulario
-	$("#cancel").click(function(){
+	function clear() {
+		
+		
 	    $('input[type="date"]').val('');
 	    $('input[type="text"]').val('');
 	    $('input[type="radio"]').val('');
-	});
+	
+
+	}
 
 
 	//---------VALIDACIONES 1º PREGUNTAS
@@ -88,7 +92,7 @@
 			   var aller = $('#allergenInput').val();
 			   console.log(aller);
 		       var mensaje = $('#smsAllergen');
-		       var ex1 = /^[A-Za-z]+$/;
+		       var ex1 = /^[A-Za-z\s\s]+$/;
 	
 	    
 			if(ex1.test(aller) || aller == "")

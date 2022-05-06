@@ -30,7 +30,7 @@
 			<input type="date" name="date_alert" id="dateInput" value="${date_alert}" >
 			<small id="smsDate" class="form-text text-muted"></small>
 			<label>Sede: </label>
-			<input type="text" name="place_alert" id="placeInput" value="${place_alert}">
+			<input type="text" name="place_alert" id="placeInput" value="${place_alert}" placeholder="C/Cuenca...">
 			<small id="smsPlace" class="form-text text-muted"></small>
 			<br/>
 			<!-- Combo Tipo producto -->
@@ -50,8 +50,23 @@
 			<label>(*Opcionales):</label>
 			<br/>
 			<br/>
-			<input type="submit" value="Crear Alerta" id="btnDoAlert" name="btnDoAlert" >
-			<input type="button" value="Cancelar Alerta" id="cancel" name="btnDoCancel" >
+			<input type="submit" value="Crear Alerta" class="btn btn-info" id="Confirm" name="btnDoAlert" >
+			<!-- <button value="Crear Alerta" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Crear</button>
+			<!-- Modal
+				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+					      <div class="modal-body">
+					      	<h1>¿Está seguro de querer crear la alerta?</h1>
+					      </div>
+					      <div class="modal-footer">
+					        <input type="submit" class="btn btn-sucess" value="Confirmar" id="btnConfirm" name="btnDoAlert" >
+					        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+					      </div>
+				    </div>
+				  </div>
+				</div> -->
+			<input type="button" value="Limpiar Formulario" class="btn btn-info" id="cancel" name="btnDoCancel" onclick="clear()">
 		</form>
 		<br/>
 		${AlertNewONG}

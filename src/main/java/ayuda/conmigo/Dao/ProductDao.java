@@ -13,6 +13,7 @@ import ayuda.conmigo.Entities.Product;
 import ayuda.conmigo.Interfaz.DAOMethods;
 
 
+
 public class ProductDao extends Conexion implements DAOMethods<Product, String>{
 
 	public ProductDao(ServletConfig servletConfig) {
@@ -78,11 +79,7 @@ public class ProductDao extends Conexion implements DAOMethods<Product, String>{
 		
 		desconectar();
 		return listDataProduct;
-
-		
 	}
-	
-	
 
 	@Override
 	public boolean create(Product obj) throws SQLException {
@@ -90,10 +87,49 @@ public class ProductDao extends Conexion implements DAOMethods<Product, String>{
 		return false;
 	}
 
+	
+	public Product read(int id) {
+			
+			
+			conectar();
+			
+			//VV
+			Product p = null;
+			
+			try {
+				
+				CallableStatement consulta = (CallableStatement) conexion.prepareCall("{call getProductbyId(?)}");
+				consulta.setInt(1,id);
+				ResultSet resultado = consulta.executeQuery();
+				
+				while(resultado.next()) {
+					p = new Product(resultado.getInt("id_product"),resultado.getString("name_product"), resultado.getString("type_product"));
+				}
+				
+				resultado.close();
+				consulta.close();
+				
+			}catch(SQLException e) {
+				
+				e.printStackTrace();
+			}
+			
+			
+			desconectar();
+			return p;
+			
+		}
+		
+	
+	
+	
 	@Override
-	public Product read(String id) throws SQLException {
-		// TODO Auto-generated method stub
+	public Product read(String id) {
 		return null;
+		
+		
+	
+		
 	}
 
 	@Override
