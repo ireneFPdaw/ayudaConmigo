@@ -29,7 +29,7 @@ public class Alert {
 		this.id_alert = id;
 		this.product = id_product;
 		this.ong = id_ong;
-		this.allergen_alert = date;
+		this.date_alert = date;
 		this.place_alert = place;
 		this.allergen_alert = allergen;
 		this.annotation_alert = annotation;

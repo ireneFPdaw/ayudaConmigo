@@ -1,7 +1,9 @@
 package ayuda.conmigo.Dao;
 
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.ServletConfig;
 import java.sql.ResultSet;
@@ -81,9 +83,35 @@ public class AlertDao extends Conexion implements DAOMethods<Alert, Integer> {
 	
 	//---------------------------------------- MAYBE
 	@Override
-	public ArrayList<Alert> getValues() throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Alert> getValues(){
+		
+		//VV.necesarias
+		conectar();
+		ArrayList<Alert> listDataAlert = new ArrayList<Alert>();
+		Alert a = null;
+		
+				
+		try {
+			
+			//Comprobrar que me recoge el tipo fecha como string
+			CallableStatement consulta = (CallableStatement) conexion.prepareCall("{call getAlert()}");
+			ResultSet datos = consulta.executeQuery();
+			while(datos.next()) {
+				
+				a = new Alert(datos.getInt("id_alert"), datos.getInt("product"), datos.getInt("ngo"), datos.getString("date_alert"), datos.getString("place_alert"),datos.getString("allergens_alert"),datos.getString("annotation_alert")); //Uso constructor por defecto
+				listDataAlert.add(a);
+			}
+			
+			
+			consulta.close();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+				
+		desconectar();
+		return listDataAlert;
+
 	}
 
 	@Override

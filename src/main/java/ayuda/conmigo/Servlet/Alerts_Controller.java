@@ -37,59 +37,74 @@ public class Alerts_Controller extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-	
+			//Datos ONG logueada (necesarios SACAR DATOS DE BD Y MOSTRAR)
+			String nameONG = "Cruz roja"; //=> lo sacaremos de la ong logueada
+			int idONG = 1; // => lo sacaremos de la ong logueada
+		
+			//Para mantener datos en formulario con onchange del combo
 			request.setAttribute("date_alert", request.getParameter("date_alert")); 	   
 			request.setAttribute("place_alert", request.getParameter("place_alert"));	  
 			
+			//Primera carga => Combo , Cards y alertas ya creadas
+			new Functions().prepareCreateAlert(getServletConfig(), request);
 			
-			//Combo y Cards
-			new Functions().prepareCreateAlert(getServletConfig(), request);
-			new Functions().prepareCreateAlert(getServletConfig(), request);
+			//Primera carga => mostramos alertas ya generadas por esa ONG
+			new Functions().prepareShowAlert(getServletConfig(), request, idONG);
 			
 			//Necesarias Carga
 			request.setAttribute("AlertNewONG", "");
-			String destino1 = "Alert.jsp";
-			
-			//Datos ONG logueada (necesarios SACAR DATOS DE BD Y MOSTRAR)
 			
 			//Datos Validados 
 			String date = request.getParameter("date_alert");
 			String place = request.getParameter("place_alert");		
 			String allergen = request.getParameter("allergen_alert");
 			String annotation = request.getParameter("annotation_alert");
-			String nameONG = "Cruz roja"; //=> lo sacaremos de la ong logueada
-			int idONG = 1; // => lo sacaremos de la ong logueada
+			
 		
-				//Si aprieto el boton y no está vacio: saca popup
-				if(request.getParameter("btnDoAlert") != null) {
+			//CREAR ALERTA
+			if(request.getParameter("btnDoAlert") != null) {
+				
+				String productFood =request.getParameter("product"); 					//id del seleccionado en string
+				int pdNew = Integer.parseInt(productFood);								//id del seleccionado en int
+				Product productByID = new ProductDao(getServletConfig()).read(pdNew);	//Obtenemos producto por id seleccionado
+				String nameProduct = productByID.getName_producto();					//Nombre del producto seleccionado
+				
+				
+				// obj alerta
+				Alert alertNew = new Alert();
+				alertNew.setDate_alert(date); 		 
+				alertNew.setPlace_alert(place);	
+				alertNew.setAllergen_alert(allergen); 		//pueden ser vacios = null
+				alertNew.setAnnotation_alert(annotation);	//pueden ser vacios = null
+				alertNew.setProduct(pdNew);
+				alertNew.setOng(idONG);
+				
+				//RR = true BD
+				if(new AlertDao(getServletConfig()).create(alertNew)) {
 					
-					String productFood =request.getParameter("product"); 					//id del seleccionado en string
-					int pdNew = Integer.parseInt(productFood);								//id del seleccionado en int
-					Product productByID = new ProductDao(getServletConfig()).read(pdNew);	//Obtenemos producto por id seleccionado
-					String nameProduct = productByID.getName_producto();					//Nombre del producto seleccionado
+					//request.setAttribute("AlertNewONG", new Alert_template().alertTemplatePage(alertNew, nameProduct,nameONG)); //**Cambiar nameONG por el de la ONG logueada
+					request.setAttribute("AlertNewONG", "Se pudo crear alerta");
 					
+					//Actualizamos show de alertas de esta ONG
+					new Functions().prepareShowAlert(getServletConfig(), request, idONG);
 					
-					// obj alerta
-					Alert alertNew = new Alert();
-					alertNew.setDate_alert(date); 		 
-					alertNew.setPlace_alert(place);	
-					alertNew.setAllergen_alert(allergen); 		//pueden ser vacios = null
-					alertNew.setAnnotation_alert(annotation);	//pueden ser vacios = null
-					alertNew.setProduct(pdNew);
-					alertNew.setOng(idONG);
-					
-					//RR = true BD
-					if(new AlertDao(getServletConfig()).create(alertNew)) {
-						
-						request.setAttribute("AlertNewONG", new Alert_template().alertTemplatePage(alertNew, nameProduct,nameONG)); //**Cambiar nameONG por el de la ONG logueada
-						//String mensaje = " => " +date + "," + place+ "," +allergen +"," + annotation+"," + nameProduct;
-						//request.setAttribute("AlertNewONG", mensaje);
-						
-					}else {
-						request.setAttribute("AlertNewONG", "Error. No sé pudo crear la alerta" );
-					}
-					
+				}else {
+					request.setAttribute("AlertNewONG", "Error. No sé pudo crear la alerta" );
 				}
+				
+			}
+			
+			//BORRAR ALERTA
+			if(request.getParameter("btnDoDeleteAlert") != null) {
+				
+				//String alertSelect = request.c("alert");
+				//System.out.println(alertSelect);
+				//currentTarget.getAttribute("data-id")
+				
+			}
+			
+			
+			
 		
 		//SACAR ALERTA EN PG Principal ONG con boton eliminar
 		//SACAR ALERTA EN Home -> si la elimina desde su pagina principal se elimina del home

@@ -70,6 +70,7 @@
 		</form>
 		<br/>
 		${AlertNewONG}
+		${alertsBdByOng}
 	</div>
 </body>
 </html>
