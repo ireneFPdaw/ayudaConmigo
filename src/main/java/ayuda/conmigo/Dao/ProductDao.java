@@ -81,12 +81,7 @@ public class ProductDao extends Conexion implements DAOMethods<Product, String>{
 		return listDataProduct;
 	}
 
-	@Override
-	public boolean create(Product obj) throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
+	
 	
 	public Product read(int id) {
 			
@@ -121,15 +116,16 @@ public class ProductDao extends Conexion implements DAOMethods<Product, String>{
 		}
 		
 	
-	
+	@Override
+	public boolean create(Product obj) throws SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	
 	@Override
 	public Product read(String id) {
 		return null;
-		
-		
-	
-		
 	}
 
 	@Override
@@ -143,9 +139,6 @@ public class ProductDao extends Conexion implements DAOMethods<Product, String>{
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-	
-
 
 	
 }

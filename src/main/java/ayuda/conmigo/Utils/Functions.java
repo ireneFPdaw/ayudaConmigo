@@ -64,8 +64,20 @@ public class Functions {
 		
 		if(listAlertsByONG.size() != 0) {
 			request.setAttribute("alertsBdByOng", new Alert_template().alertTemplatePage(listAlertsByONG));
+		}else {
+			request.setAttribute("alertsBdByOng", "No ha creado ninguna alerta");
 		}
-			
+		
+	}
+	
+	public void prepareAlertHome (ServletConfig servletConfig, HttpServletRequest request) {
+		
+		ArrayList<Alert> listDataAlerts = new AlertDao(servletConfig).getValues();
+		if(listDataAlerts.size() != 0) {
+			request.setAttribute("alertsHome", new Alert_template().alertTemplateHome(listDataAlerts));
+		}else {
+			request.setAttribute("alertsHome", "No hay alertas disponibles");
+		}
 		
 	}
 

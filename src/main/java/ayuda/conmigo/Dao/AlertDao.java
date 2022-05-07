@@ -22,7 +22,6 @@ public class AlertDao extends Conexion implements DAOMethods<Alert, Integer> {
 	}
 
 	
-	//---------------------------------NEED
 	@Override
 	public boolean create(Alert obj) {
 		
@@ -50,8 +49,6 @@ public class AlertDao extends Conexion implements DAOMethods<Alert, Integer> {
 			
 			
 		}catch(SQLException e) {
-			
-			
 			e.printStackTrace();
 		}
 		
@@ -61,39 +58,32 @@ public class AlertDao extends Conexion implements DAOMethods<Alert, Integer> {
 	}
 
 	public boolean delete(Integer id) {
+			conectar();
 		
+			//VV necesaria
+			boolean delete= false;
+			int rowDelete = 0;
 		
-		
-		
-		
-		return false;
+			try {
+				
+				CallableStatement consulta = (CallableStatement) conexion.prepareCall("{call deleteAlert(?)}");
+				consulta.setInt(1,id);
+				rowDelete= consulta.executeUpdate();
+				
+				if(rowDelete > 0) {
+					delete= true;
+				}
+				
+				consulta.close();
+				
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+			
+			desconectar();
+			return delete;
 	}
 
-	
-	
-	
-	
-	@Override
-	public Alert read(Integer id) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean delete(Alert obj) throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	
-
-	@Override
-	public boolean update(Alert obj) throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	
 	@Override
 	public ArrayList<Alert> getValues(){
 		
@@ -126,6 +116,30 @@ public class AlertDao extends Conexion implements DAOMethods<Alert, Integer> {
 
 	}
 
+
+	
+	@Override
+	public Alert read(Integer id) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean delete(Alert obj) throws SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	
+
+	@Override
+	public boolean update(Alert obj) throws SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	
+	
 	@Override
 	public ArrayList<Alert> getValuesById(Integer id) throws SQLException {
 		// TODO Auto-generated method stub
