@@ -95,11 +95,21 @@ public class Alerts_Controller extends HttpServlet {
 			}
 			
 			//BORRAR ALERTA
-			if(request.getParameter("btnDoDeleteAlert") != null) {
+			if(request.getParameter("btnDelete") != null) {
 				
-				//String alertSelect = request.c("alert");
-				//System.out.println(alertSelect);
-				//currentTarget.getAttribute("data-id")
+				//Recojo el id de la alerta para eliminarla
+				String alertSelect = request.getParameter("alert");
+				int idAlert = Integer.parseInt(alertSelect);
+				
+				
+				if(new AlertDao(getServletConfig()).delete(idAlert)) {
+					
+					request.setAttribute("SMS", "eliminado con exito");
+					
+				}else {
+					request.setAttribute("SMS", "no eliminado con exito");
+				}
+			
 				
 			}
 			

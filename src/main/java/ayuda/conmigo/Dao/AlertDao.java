@@ -60,6 +60,19 @@ public class AlertDao extends Conexion implements DAOMethods<Alert, Integer> {
 	
 	}
 
+	public boolean delete(Integer id) {
+		
+		
+		
+		
+		
+		return false;
+	}
+
+	
+	
+	
+	
 	@Override
 	public Alert read(Integer id) throws SQLException {
 		// TODO Auto-generated method stub
@@ -73,7 +86,7 @@ public class AlertDao extends Conexion implements DAOMethods<Alert, Integer> {
 	}
 
 	
-	//---------------------------------------- NOT NEED
+
 	@Override
 	public boolean update(Alert obj) throws SQLException {
 		// TODO Auto-generated method stub
@@ -81,7 +94,6 @@ public class AlertDao extends Conexion implements DAOMethods<Alert, Integer> {
 	}
 
 	
-	//---------------------------------------- MAYBE
 	@Override
 	public ArrayList<Alert> getValues(){
 		
