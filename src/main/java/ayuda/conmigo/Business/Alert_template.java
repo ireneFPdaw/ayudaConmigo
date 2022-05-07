@@ -19,7 +19,7 @@ public class Alert_template {
 					+ "<th scope='row'>Localización:</th>  <th scope='row'>*Alergenos</th></tr> <tr> <th scope='row'>"+obj.getDate_alert()+" </th><th scope='row'>"+obj.getPlace_alert()+" </th>  "
 					+ " <th scope='row'>"+obj.getAllergen_alert()+"</th></tr><tr><th scope='row' colspan='3'>*Especificaciones</th></tr> <tr> <th scope='row'>"+obj.getAnnotation_alert()+"</th>"
 					+ " <th scope='row'></th></tr><tr><th scope='row'></th>"
-					+ " <th scope='row'></th><th scope='row'><input type='submit' name='btnDoDelete' id='btnDeleteAlert' class='btn btn-danger'></th> </tr>"
+					+ " <th scope='row'></th><th scope='row'><input type='submit' name='btnDoDelete' id='btnDeleteAlert' class='btn btn-danger' value='Eliminar'/></th> </tr>"
 					+ "</tbody></table></div></div>";
 		}	
 		
@@ -34,7 +34,7 @@ public class Alert_template {
 					+ "<th scope='row'>Localización:</th>  <th scope='row'>*Alergenos</th></tr> <tr> <th scope='row'>"+obj.getDate_alert()+" </th><th scope='row'>"+obj.getPlace_alert()+" </th>  "
 					+ " <th scope='row'>"+obj.getAllergen_alert()+"</th></tr><tr><th scope='row' colspan='3'>*Especificaciones</th></tr> <tr> <th scope='row'>"+obj.getAnnotation_alert()+"</th>"
 					+ " <th scope='row'></th></tr><tr><th scope='row'></th>"
-					+ " <th scope='row'></th><th scope='row'><input type='submit' name='btnDoDelete' id='btnDeleteAlert' class='btn btn-danger'>ELIMINAR</button></th> </tr>"
+					+ " <th scope='row'></th><th scope='row'><input type='submit' name='btnDoDelete' id='btnDeleteAlert' class='btn btn-danger'></th> </tr>"
 					+ "</tbody></table></div></div>";
 		}	
 		

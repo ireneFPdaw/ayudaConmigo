@@ -23,10 +23,13 @@
 	function clear() {
 		
 		
-	    $('input[type="date"]').val('');
-	    $('input[type="text"]').val('');
-	    $('input[type="radio"]').val('');
+	  var inputDate=  $('input[type="date"]').val('');
+	  var inputText =   $('input[type="text"]').val('');
+	  var inputRadio=  $('input[type="radio"]').val('');
 	
+		inputDate.val("");
+		inputText.val("");
+		inputRadio.val("");
 
 	}
 

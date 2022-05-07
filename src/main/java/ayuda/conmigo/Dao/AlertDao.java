@@ -30,12 +30,13 @@ public class AlertDao extends Conexion implements DAOMethods<Alert, Integer> {
 		
 		try {
 			
-			CallableStatement consulta = (CallableStatement) conexion.prepareCall("{call createAlert(?,?,?,?,?)}");
+			CallableStatement consulta = (CallableStatement) conexion.prepareCall("{call createAlert(?,?,?,?,?,?)}");
 			consulta.setString(1,obj.getDate_alert());
 			consulta.setString(2,obj.getPlace_alert());
 			consulta.setString(3,obj.getAllergen_alert());
 			consulta.setString(4,obj.getAnnotation_alert());
 			consulta.setInt(5,obj.getProduct());
+			consulta.setInt(6,obj.getOng());
 			
 			result = consulta.executeUpdate();
 			if(result != 0)

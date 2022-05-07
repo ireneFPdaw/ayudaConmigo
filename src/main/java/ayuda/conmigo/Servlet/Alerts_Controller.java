@@ -58,7 +58,7 @@ public class Alerts_Controller extends HttpServlet {
 			String allergen = request.getParameter("allergen_alert");
 			String annotation = request.getParameter("annotation_alert");
 			String nameONG = "Cruz roja"; //=> lo sacaremos de la ong logueada
-			
+			int idONG = 1; // => lo sacaremos de la ong logueada
 		
 				//Si aprieto el boton y no está vacio: saca popup
 				if(request.getParameter("btnDoAlert") != null) {
@@ -76,6 +76,7 @@ public class Alerts_Controller extends HttpServlet {
 					alertNew.setAllergen_alert(allergen); 		//pueden ser vacios = null
 					alertNew.setAnnotation_alert(annotation);	//pueden ser vacios = null
 					alertNew.setProduct(pdNew);
+					alertNew.setOng(idONG);
 					
 					//RR = true BD
 					if(new AlertDao(getServletConfig()).create(alertNew)) {

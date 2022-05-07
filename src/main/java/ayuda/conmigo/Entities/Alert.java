@@ -4,8 +4,9 @@ public class Alert {
 	
 	//Variables
 	private int id_alert;					//Deberia de ser constante ascendente
-	private int product; 		//Este es heredado de clase producto "cambiar"
-	private String date_alert;
+	private int product; 					//relacionado con entidad Producto
+	private int ong;						//relacionada con entidad ONG
+	private String date_alert;	
 	private String place_alert;
 	private String allergen_alert;
 	private String annotation_alert;
@@ -15,6 +16,7 @@ public class Alert {
 		super();
 		this.id_alert = 0; 			//Deberia de ser constante ascendente por defecto
 		this.product = 0;
+		this.ong = 0;
 		this.date_alert = "";
 		this.place_alert = "";
 		this.allergen_alert = "";
@@ -22,10 +24,11 @@ public class Alert {
 	}
 	
 	//Constructor
-	public Alert(int id, int id_product, String date, String place, String allergen, String annotation) {
+	public Alert(int id, int id_product, int id_ong, String date, String place, String allergen, String annotation) {
 		super();
 		this.id_alert = id;
 		this.product = id_product;
+		this.ong = id_ong;
 		this.allergen_alert = date;
 		this.place_alert = place;
 		this.allergen_alert = allergen;
@@ -47,6 +50,14 @@ public class Alert {
 
 	public void setProduct(int product) {
 		this.product = product;
+	}
+
+	public int getOng() {
+		return ong;
+	}
+
+	public void setOng(int ong) {
+		this.ong = ong;
 	}
 
 	public String getDate_alert() {
@@ -81,5 +92,6 @@ public class Alert {
 		this.annotation_alert = annotation_alert;
 	}
 
+	
 	
 }
