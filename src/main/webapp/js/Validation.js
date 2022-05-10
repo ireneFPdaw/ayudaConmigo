@@ -23,9 +23,9 @@
 	function clear() {
 		
 		
-	  var inputDate=  $('input[type="date"]').val('');
-	  var inputText =   $('input[type="text"]').val('');
-	  var inputRadio=  $('input[type="radio"]').val('');
+	  var inputDate=  $('input[type="date"]');
+	  var inputText =   $('input[type="text"]');
+	  var inputRadio=  $('input[type="radio"]');
 	
 		inputDate.val("");
 		inputText.val("");

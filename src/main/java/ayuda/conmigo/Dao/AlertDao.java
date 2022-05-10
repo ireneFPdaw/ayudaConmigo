@@ -21,10 +21,14 @@ public class AlertDao extends Conexion implements DAOMethods<Alert, Integer> {
 		// TODO Auto-generated constructor stub
 	}
 
+
+		
+		
 	
 	@Override
 	public boolean create(Alert obj) {
 		
+		//VV need
 		conectar();
 		boolean insert = false;
 		int result = 0;
@@ -60,7 +64,7 @@ public class AlertDao extends Conexion implements DAOMethods<Alert, Integer> {
 	public boolean delete(Integer id) {
 			conectar();
 		
-			//VV necesaria
+			//VV need
 			boolean delete= false;
 			int rowDelete = 0;
 		
@@ -87,7 +91,7 @@ public class AlertDao extends Conexion implements DAOMethods<Alert, Integer> {
 	@Override
 	public ArrayList<Alert> getValues(){
 		
-		//VV.necesarias
+		//VV need
 		conectar();
 		ArrayList<Alert> listDataAlert = new ArrayList<Alert>();
 		Alert a = null;

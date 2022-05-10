@@ -39,8 +39,8 @@ public class Alerts_Controller extends HttpServlet {
 		
 			//Datos ONG logueada (necesarios SACAR DATOS DE BD Y MOSTRAR)
 			String nameONG = "Cruz roja"; //=> lo sacaremos de la ong logueada
-			int idONG = 1; // => lo sacaremos de la ong logueada
-		
+			String ONG = "El pato Amarillo"; // => lo sacaremos de la ong logueada
+			int idONG = 1;
 			//Para mantener datos en formulario con onchange del combo
 			request.setAttribute("date_alert", request.getParameter("date_alert")); 	   
 			request.setAttribute("place_alert", request.getParameter("place_alert"));	  
@@ -49,7 +49,7 @@ public class Alerts_Controller extends HttpServlet {
 			new Functions().prepareCreateAlert(getServletConfig(), request);
 			
 			//Primera carga => mostramos alertas ya generadas por esa ONG
-			new Functions().prepareShowAlert(getServletConfig(), request, idONG);
+			new Functions().prepareShowAlert(getServletConfig(), request, ONG);
 			
 			//Necesarias Carga
 			request.setAttribute("AlertNewONG", "");
@@ -86,7 +86,7 @@ public class Alerts_Controller extends HttpServlet {
 					request.setAttribute("AlertNewONG", "Se pudo crear alerta");
 					
 					//Actualizamos show de alertas de esta ONG
-					new Functions().prepareShowAlert(getServletConfig(), request, idONG);
+					new Functions().prepareShowAlert(getServletConfig(), request, ONG);
 					
 				}else {
 					request.setAttribute("AlertNewONG", "Error. No sé pudo crear la alerta" );
@@ -105,7 +105,7 @@ public class Alerts_Controller extends HttpServlet {
 					
 					request.setAttribute("AlertNewONG", "eliminado con exito");
 					
-					new Functions().prepareShowAlert(getServletConfig(), request, idONG); //Actualizamos
+					new Functions().prepareShowAlert(getServletConfig(), request, ONG); //Actualizamos
 					
 				}else {
 					request.setAttribute("AlertNewONG", "no eliminado. Erorr BD");

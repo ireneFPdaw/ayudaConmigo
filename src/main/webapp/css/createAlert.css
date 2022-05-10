@@ -1,0 +1,39 @@
+@import url("variables.css");
+
+.titleCreate {
+   
+    justify-content: center!important;
+    padding-bottom: 3%;
+}
+
+.createBox {
+    margin-top: 3%;
+    margin-left: 2%;
+    border: 2px solid rgb(239, 180, 244);
+    border-radius: 30px;
+}
+
+.titleCreate > h2 {
+    background-color: blueviolet;
+    color: white;
+    box-shadow:  -5px 5px 8px #5a47b7;
+    border-radius: 30px;
+}
+
+.alertsONG  {
+
+    margin-top: 3%;
+    margin-left: 2%;
+    margin-bottom: 3%;
+    border: 2px solid rgb(239, 180, 244);
+    border-radius: 30px;
+}
+
+.row {
+   
+    display: flex!important;
+    -ms-flex-wrap:nowrap!important;
+     flex-wrap:nowrap!important; 
+    margin-right: -15px!important;
+    margin-left: -15px!important;
+}

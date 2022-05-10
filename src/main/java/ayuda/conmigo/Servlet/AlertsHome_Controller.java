@@ -41,6 +41,17 @@ public class AlertsHome_Controller extends HttpServlet {
 		
 		new Functions().prepareAlertHome(getServletConfig(), request);
 		
+		if(request.getParameter("searchBtn") != null) {
+			
+			//Recojo el filtro
+			String dataSearch = request.getParameter("searchData");
+			
+			//Recogemos las alertas que son seleccionadas y solo mostramos esas actualizando el show
+			
+			new Functions().prepareAlertHomeFiltre(getServletConfig(), request, dataSearch);
+			
+		}
+		
 		String destino = "Home.jsp";
 		request.getRequestDispatcher(destino).forward(request, response);
 		

@@ -10,8 +10,10 @@ import ayuda.conmigo.Business.Alert_template;
 import ayuda.conmigo.Business.Cards_Fun;
 import ayuda.conmigo.Business.Combo_Fun;
 import ayuda.conmigo.Dao.AlertDao;
+import ayuda.conmigo.Dao.AlertShowDao;
 import ayuda.conmigo.Dao.ProductDao;
 import ayuda.conmigo.Entities.Alert;
+import ayuda.conmigo.Entities.AlertShow;
 import ayuda.conmigo.Entities.Product;
 
 
@@ -51,14 +53,14 @@ public class Functions {
 				
 		}	
 	
-	public void prepareShowAlert (ServletConfig servletConfig, HttpServletRequest request, int idONG) {
+	public void prepareShowAlert (ServletConfig servletConfig, HttpServletRequest request, String ONG) {
 		
 		/*DATOS PARA MOSTRAR ALERTAS YA CREADAS ----------------------------------------*/
-		ArrayList<Alert> listDataAlerts = new AlertDao(servletConfig).getValues(); //Obtengo todas las alertas para el HOME
-		ArrayList<Alert> listAlertsByONG = new ArrayList<Alert>();	
-		for (Alert alert : listDataAlerts) {
-			if(alert.getOng() == idONG) {
-				listAlertsByONG.add(alert);
+		ArrayList<AlertShow> listDataAlerts = new AlertShowDao(servletConfig).getValues(); //Obtengo todas las alertas para el HOME
+		ArrayList<AlertShow> listAlertsByONG = new ArrayList<AlertShow>();	
+		for (AlertShow a : listDataAlerts) {
+			if(a.getOng().equals(ONG)) {
+				listAlertsByONG.add(a);
 			}
 		}
 		
@@ -72,9 +74,21 @@ public class Functions {
 	
 	public void prepareAlertHome (ServletConfig servletConfig, HttpServletRequest request) {
 		
-		ArrayList<Alert> listDataAlerts = new AlertDao(servletConfig).getValues();
+		ArrayList<AlertShow> listDataAlerts = new AlertShowDao(servletConfig).getValues();
 		if(listDataAlerts.size() != 0) {
 			request.setAttribute("alertsHome", new Alert_template().alertTemplateHome(listDataAlerts));
+		}else {
+			request.setAttribute("alertsHome", "No hay alertas disponibles");
+		}
+		
+	}
+	
+	public void prepareAlertHomeFiltre (ServletConfig servletConfig, HttpServletRequest request, String filter) {
+		
+		ArrayList<AlertShow> listDataAlertsFilt = new AlertShowDao(servletConfig).getValuesByFilter(filter);
+		
+		if(listDataAlertsFilt.size() != 0) {
+			request.setAttribute("alertsHome", new Alert_template().alertTemplateHome(listDataAlertsFilt));
 		}else {
 			request.setAttribute("alertsHome", "No hay alertas disponibles");
 		}

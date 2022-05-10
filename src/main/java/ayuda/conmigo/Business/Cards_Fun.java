@@ -10,7 +10,7 @@ public class Cards_Fun {
 	public String cardProductByType (ArrayList<Product> listDataProduct, int select, String[] images)  {
 		
 	 
-		String card = "<div class=\"card-deck\">";
+		String card = "<div class=\"card-deck pr-5 pt-3\">";
 		for(Product p: listDataProduct) {
 			card += "<div class=\'card\'>"
 					   + "<div class=\'card-body\'>   <h5 class=\'card-title\'>"+ p.getName_producto()  +"</h5></div>"
