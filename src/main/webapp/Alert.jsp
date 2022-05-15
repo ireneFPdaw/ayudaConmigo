@@ -22,6 +22,14 @@
 
 </head>
 <body>
+
+<!-- Cuando se esté logueado -->
+<%
+	//Si es false lo mandamos al login
+	//if(!Confirm_Log.checkLogUser(session.getAttribute("logueado"))){
+		//response.sendRedirect("Login.jsp");
+	//}
+%>
 	<script type="text/javaScript" src="./js/Validation.js"></script>
 	
 <!--Contenedor-->

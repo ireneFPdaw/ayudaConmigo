@@ -24,7 +24,7 @@
 <body>
 
 <!--Contenedor-->
-<div class="container">
+<div class="">
 
   <!-- FILA 1 HEADER -->
 
@@ -113,6 +113,7 @@
 		  	  </div>
 		  </div>
           ${alertsHome}
+          ${commentsByAlert}
         </div>
   </div>
 
@@ -202,6 +203,5 @@
 <!--Final PG-->
 </div>
 
-<script type="text/javaScript" src="./js/ButtonSelect.js"></script>
 </body>
 </html>

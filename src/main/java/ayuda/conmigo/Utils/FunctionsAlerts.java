@@ -11,14 +11,16 @@ import ayuda.conmigo.Business.Cards_Fun;
 import ayuda.conmigo.Business.Combo_Fun;
 import ayuda.conmigo.Dao.AlertDao;
 import ayuda.conmigo.Dao.AlertShowDao;
+import ayuda.conmigo.Dao.CommentDao;
 import ayuda.conmigo.Dao.ProductDao;
 import ayuda.conmigo.Entities.Alert;
 import ayuda.conmigo.Entities.AlertShow;
+import ayuda.conmigo.Entities.Comment;
 import ayuda.conmigo.Entities.Product;
 
 
 
-public class Functions {
+public class FunctionsAlerts {
 	
 	public void prepareCreateAlert (ServletConfig servletConfig, HttpServletRequest request) {
 			
@@ -85,15 +87,28 @@ public class Functions {
 	
 	public void prepareAlertHomeFiltre (ServletConfig servletConfig, HttpServletRequest request, String filter) {
 		
-		ArrayList<AlertShow> listDataAlertsFilt = new AlertShowDao(servletConfig).getValuesByFilter(filter);
+		ArrayList<AlertShow> listDataAlertsFilter = new AlertShowDao(servletConfig).getValuesByFilter(filter);
 		
-		if(listDataAlertsFilt.size() != 0) {
-			request.setAttribute("alertsHome", new Alert_template().alertTemplateHome(listDataAlertsFilt));
+		if(listDataAlertsFilter.size() != 0) {
+			request.setAttribute("alertsHome", new Alert_template().alertTemplateHome(listDataAlertsFilter));
 		}else {
 			request.setAttribute("alertsHome", "No hay alertas disponibles");
 		}
 		
 	}
-
+	
+	public void prepareCommentAlert (ServletConfig servletConfig, HttpServletRequest request, int id_alert) {
+		
+		ArrayList<Comment> listCommentByAlert = new CommentDao(servletConfig).getValuesById(id_alert);
+		
+		if(listCommentByAlert.size() != 0) {
+			request.setAttribute("commentsByAlert", new Alert_template().commentTemplateAlert(listCommentByAlert));
+		}else {
+			request.setAttribute("commentsByAlert", "No hay comentarios");
+		}
+		
+	}
+	
+	
 		
 }

@@ -63,8 +63,7 @@ public class AlertShowDao extends Conexion implements DAOMethods<AlertShow, Inte
 					consulta.setString(1,filter);
 					ResultSet datos = consulta.executeQuery();
 					while(datos.next()) {
-						
-						a = new AlertShow(datos.getInt("id_alert"), datos.getString("product"), datos.getString("ngo"), datos.getString("date_alert"), datos.getString("place_alert"),datos.getString("allergens_alert"),datos.getString("annotation_alert")); //Uso constructor por defecto
+						a = new AlertShow(datos.getInt("id_alert"), datos.getString("name_product"), datos.getString("name_ngo"), datos.getString("date_alert"), datos.getString("place_alert"),datos.getString("allergens_alert"),datos.getString("annotation_alert"));
 						listDataAlertByFilter.add(a);
 					}
 					
@@ -77,7 +76,7 @@ public class AlertShowDao extends Conexion implements DAOMethods<AlertShow, Inte
 						
 				desconectar();
 				return listDataAlertByFilter;
-			}
+	}
 	
 	
 	@Override

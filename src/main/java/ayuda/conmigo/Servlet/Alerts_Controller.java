@@ -14,7 +14,7 @@ import ayuda.conmigo.Dao.AlertDao;
 import ayuda.conmigo.Dao.ProductDao;
 import ayuda.conmigo.Entities.Alert;
 import ayuda.conmigo.Entities.Product;
-import ayuda.conmigo.Utils.Functions;
+import ayuda.conmigo.Utils.FunctionsAlerts;
 
 
 
@@ -41,15 +41,16 @@ public class Alerts_Controller extends HttpServlet {
 			String nameONG = "Cruz roja"; //=> lo sacaremos de la ong logueada
 			String ONG = "El pato Amarillo"; // => lo sacaremos de la ong logueada
 			int idONG = 1;
+			
 			//Para mantener datos en formulario con onchange del combo
 			request.setAttribute("date_alert", request.getParameter("date_alert")); 	   
 			request.setAttribute("place_alert", request.getParameter("place_alert"));	  
 			
 			//Primera carga => Combo , Cards y alertas ya creadas
-			new Functions().prepareCreateAlert(getServletConfig(), request);
+			new FunctionsAlerts().prepareCreateAlert(getServletConfig(), request);
 			
 			//Primera carga => mostramos alertas ya generadas por esa ONG
-			new Functions().prepareShowAlert(getServletConfig(), request, ONG);
+			new FunctionsAlerts().prepareShowAlert(getServletConfig(), request, ONG);
 			
 			//Necesarias Carga
 			request.setAttribute("AlertNewONG", "");
@@ -86,7 +87,7 @@ public class Alerts_Controller extends HttpServlet {
 					request.setAttribute("AlertNewONG", "Se pudo crear alerta");
 					
 					//Actualizamos show de alertas de esta ONG
-					new Functions().prepareShowAlert(getServletConfig(), request, ONG);
+					new FunctionsAlerts().prepareShowAlert(getServletConfig(), request, ONG);
 					
 				}else {
 					request.setAttribute("AlertNewONG", "Error. No sé pudo crear la alerta" );
@@ -97,7 +98,6 @@ public class Alerts_Controller extends HttpServlet {
 			//BORRAR ALERTA
 			if(request.getParameter("btnDelete") != null) {
 				
-				
 				String alertSelect = request.getParameter("alert"); //Recojo id
 				int idAlert = Integer.parseInt(alertSelect);
 				
@@ -105,7 +105,7 @@ public class Alerts_Controller extends HttpServlet {
 					
 					request.setAttribute("AlertNewONG", "eliminado con exito");
 					
-					new Functions().prepareShowAlert(getServletConfig(), request, ONG); //Actualizamos
+					new FunctionsAlerts().prepareShowAlert(getServletConfig(), request, ONG); //Actualizamos
 					
 				}else {
 					request.setAttribute("AlertNewONG", "no eliminado. Erorr BD");
